@@ -1,5 +1,5 @@
 import express from 'express'
-import militarController from '../controllers/militar.controller'
+import militarController from '../controllers/militar.controller.js'
 
 const router = express.Router();
 
@@ -9,6 +9,6 @@ router.get("/militares/listar/:id", militarController.listarPorId)
 router.put("/militares/editar/total/:id", militarController.editarTotal)
 router.patch("/militares/editar/parcial/:id", militarController.editarParcial )
 router.delete("/militares/excluir/:id", militarController.excluirPorId)
-router.delete("/militares/excluir/todos", militarController.excluirTodos)
+router.delete("/militares/excluir/", militarController.excluirTodos)
 
 export default router 

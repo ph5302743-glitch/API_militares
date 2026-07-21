@@ -12,3 +12,12 @@ const conexao = new Pool({
   port: process.env.PGPORT,
   database: process.env.PGDATABASE,
 })
+
+try {
+  const resultado = await conexao.query('SELECT NOW()')
+  console.log("Conectado ao banco com sucesso:", resultado.rows[0])
+} catch (error) {
+  console.error({mensagem: "Erro ao conectar ao banco:", erro: error.message})
+}
+
+export default conexao;

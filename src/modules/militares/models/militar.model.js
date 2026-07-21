@@ -10,14 +10,14 @@ class militarModel {
     }
 
     static async listarTodos() {
-        const query = `select * from militares`
+        const query = `select * from militar`
         const resultado = await conexao.query(query)
         return resultado.rows
     }
 
     static async listarPorId(id) {
         const dados = [id]
-        const query = `select * from militar where codigo = $1`
+        const query = `select * from militar where id = $1`
         const resultado = await conexao.query(query, dados)
         return resultado.rows
     }
@@ -42,7 +42,7 @@ class militarModel {
             return null
         }
 
-        const militar = militar[0]
+        const militar = militares[0]
 
         const dados = [ 
             id, 
@@ -57,8 +57,8 @@ class militarModel {
     }
 
     static async excluirPorId(id) {
-        const filmes = await FilmeModel.listarPorId(id)
-        if (filmes.length === 0) {
+        const militares = await militarModel.listarPorId(id)
+        if (militares.length === 0) {
             return null
         }
         const dados = [id]
