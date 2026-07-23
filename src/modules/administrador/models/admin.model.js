@@ -14,11 +14,16 @@ class AdministradorModel{
         const res = await conexao.query(query)
         return Number(res.rows)
 
-    }
-    static async buscarPorEmail(){
+    }                           //info passada pelo usuario
+    static async buscarPorEmail(email){
+                        //tranformando em array
         const dados = [email]
+                        //texto que sera executado no BD
         const query = `SELECT email from admins where email = $1`
+                        //conexão com o BD  query= texto que executara no banco
+             //guarda o resultado da consulta  //  dados= os dados que o usuario passou 
         const res = await conexao.query(query, dados)
+        //retorna o resultado
         return res.rows
     }
 
